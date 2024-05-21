@@ -22,7 +22,7 @@
 
 import { openDB } from 'idb';
 
-const initdb = async () => {
+const initDb = async () => 
   openDB('jate', 1, {
     upgrade(db) {
       if (db.objectStoreNames.contains('jate')) {
@@ -33,7 +33,7 @@ const initdb = async () => {
       console.log('jate database created');
     },
   });
-};
+;
 
 export const putDb = async (content) => {
   try {
@@ -50,7 +50,7 @@ export const putDb = async (content) => {
   }
 };
 
-export const getAllContentFromDb = async () => {
+export const getDb = async () => {
   try {
     const db = await openDB('jate', 1);
     const tx = db.transaction('jate', 'readonly');
@@ -68,5 +68,5 @@ export const getAllContentFromDb = async () => {
 };
 
 // Call the method to get all content from the database
-getAllContentFromDb();
-initdb()
+getDb();
+initDb()
