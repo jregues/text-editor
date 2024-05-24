@@ -42,7 +42,7 @@ export const putDb = async (content) => {
     const store = tx.objectStore('jate');
 
     // Add the content to the database
-    await store.put(content);
+    await store.put({id: 1, value: content});
 
     console.log('Content added to the database successfully');
   } catch (error) {
@@ -57,7 +57,7 @@ export const getDb = async () => {
     const store = tx.objectStore('jate');
 
     // Retrieve all content from the database
-    const allContent = await store.getAll();
+    const allContent = await store.get(1);
 
     console.log('All content retrieved from the database:', allContent);
     return allContent;

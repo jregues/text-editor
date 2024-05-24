@@ -46,16 +46,14 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './src/index.html',
-        filename: 'index.html',
-        chunks: ['main'],
-      }),
-      new HtmlWebpackPlugin({
-        template: './src/install.html',
-        filename: 'install.html',
-        chunks: ['install'],
+        template: './index.html',
+        title: 'J.A.T.E'
       }),
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
+        start_url: '/',
+        publicPath: '/',
         name: 'My PWA App',
         short_name: 'PWA App',
         description: 'My Progressive Web App',
@@ -63,15 +61,15 @@ module.exports = () => {
         theme_color: '#2196f3',
         icons: [
           {
-            src: path.resolve('src/assets/icon.png'),
+            src: path.resolve('src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
           },
         ],
       }),
       new InjectManifest({
-        swSrc: './src/sw.js',
-        swDest: 'service-worker.js',
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
       }),
     ],
     module: {
